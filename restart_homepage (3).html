@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESTART 2025 | 障がい者・グレーゾーンの学び直しガイドブック</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-400: #A3A3A3;
+            --gray-600: #525252;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.8;
+        }
+
+        /* ==================== */
+        /* HERO SECTION */
+        /* ==================== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .hero-left {
+            background: var(--gray-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .hero-left::before {
+            content: '2025';
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gray-400);
+        }
+
+        .hero-left::after {
+            content: 'RESTART';
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--gray-400);
+        }
+
+        .book-display {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .book-cover {
+            width: 100%;
+            height: auto;
+            box-shadow: 
+                0 25px 50px -12px rgba(0,0,0,0.15),
+                0 0 0 1px rgba(0,0,0,0.05);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .book-cover:hover {
+            transform: translateY(-10px) rotate(-1deg);
+            box-shadow: 
+                0 35px 60px -15px rgba(0,0,0,0.2),
+                0 0 0 1px rgba(0,0,0,0.05);
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+            width: fit-content;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+
+        .hero-desc {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+            line-height: 2;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--black);
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .hero-meta {
+            position: absolute;
+            bottom: 3rem;
+            right: 4rem;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            text-align: right;
+        }
+
+        .hero-meta p {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ==================== */
+        /* ABOUT SECTION */
+        /* ==================== */
+        .about {
+            padding: 8rem 2rem;
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+        }
+
+        .about-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--gray-400);
+        }
+
+        .about-content h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 2.2;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content strong {
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        /* ==================== */
+        /* CONTENTS SECTION */
+        /* ==================== */
+        .contents {
+            padding: 8rem 2rem;
+            background: var(--gray-50);
+        }
+
+        .contents-header {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .contents-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+        }
+
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--white);
+            padding: 2rem;
+            border-left: 4px solid var(--black);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateX(8px);
+        }
+
+        .content-card-num {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            margin-bottom: 0.8rem;
+        }
+
+        .content-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .content-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        /* ==================== */
+        /* WORKSHEET SECTION */
+        /* ==================== */
+        .worksheet {
+            padding: 8rem 2rem;
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .worksheet-header {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .worksheet-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.8rem;
+        }
+
+        .worksheet-desc {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+        }
+
+        .worksheet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .worksheet-card {
+            display: block;
+            padding: 2rem;
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.3s ease;
+            border: 2px solid var(--gray-200);
+        }
+
+        .worksheet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .worksheet-card-blue {
+            border-left: 4px solid #3B7CB6;
+        }
+
+        .worksheet-card-blue:hover {
+            border-color: #3B7CB6;
+            background: #F0F7FC;
+        }
+
+        .worksheet-card-green {
+            border-left: 4px solid #4A9B7F;
+        }
+
+        .worksheet-card-green:hover {
+            border-color: #4A9B7F;
+            background: #F0F9F5;
+        }
+
+        .worksheet-card-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+            margin-bottom: 0.8rem;
+        }
+
+        .worksheet-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .worksheet-card p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .worksheet-card-link {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .worksheet-card-blue .worksheet-card-link {
+            color: #3B7CB6;
+        }
+
+        .worksheet-card-green .worksheet-card-link {
+            color: #4A9B7F;
+        }
+
+        /* ==================== */
+        /* FEATURES SECTION */
+        /* ==================== */
+        .features {
+            padding: 8rem 2rem;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .features-header {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .features .about-label {
+            color: var(--gray-400);
+        }
+
+        .features-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.01em;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-item {
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-item h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.9;
+        }
+
+        /* ==================== */
+        /* CTA SECTION */
+        /* ==================== */
+        .cta {
+            padding: 8rem 2rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .cta p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            line-height: 2;
+        }
+
+        .cta .btn {
+            font-size: 1rem;
+            padding: 1.2rem 3rem;
+        }
+
+        /* ==================== */
+        /* FOOTER */
+        /* ==================== */
+        .footer {
+            background: var(--gray-100);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            font-size: 1rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-info {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            text-align: right;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.2rem;
+        }
+
+        /* ==================== */
+        /* RESPONSIVE */
+        /* ==================== */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 6rem 2rem 3rem;
+                min-height: auto;
+            }
+
+            .hero-left::before,
+            .hero-left::after {
+                display: none;
+            }
+
+            .book-display {
+                max-width: 280px;
+            }
+
+            .hero-right {
+                padding: 3rem 2rem 6rem;
+            }
+
+            .hero-meta {
+                position: static;
+                margin-top: 3rem;
+                text-align: left;
+            }
+
+            .about-grid,
+            .contents-header,
+            .features-header,
+            .worksheet-header {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contents-grid,
+            .worksheet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="book-display">
+                <img src="restart_cover.jpg" alt="RESTART 2025 表紙" class="book-cover">
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <span class="hero-badge">ガイドブック公開中</span>
+            <h1 class="hero-title">
+                障がい者・グレーゾーンの<br>
+                学び直しガイドブック
+            </h1>
+            <p class="hero-subtitle">
+                もう一度、学びをはじめるあなたへ
+            </p>
+            <p class="hero-desc">
+                かつて特別支援を受けていた方、グレーゾーンと言われてきた方のための、
+                学び直しの道を一緒に考えるガイドブックです。
+            </p>
+            <div class="hero-buttons">
+                <a href="restart_guidebook.pdf" download class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7,10 12,15 17,10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    PDFをダウンロード
+                </a>
+                <a href="#worksheet" class="btn btn-secondary">質問票を使う</a>
+            </div>
+
+            <div class="hero-meta">
+                <p>著：矢野 太一</p>
+                <p>監修：道尾 淳子</p>
+                <p>発行：2025年12月2日</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <p class="about-label">ABOUT</p>
+                </div>
+                <div class="about-content">
+                    <h2>学びなおしに年齢制限はありません</h2>
+                    <p>
+                        本書は、かつて特別支援学級や特別支援学校に通っていた方、支援を受けながら学校生活を送っていた方、
+                        そしていわゆる「グレーゾーン」と呼ばれ、思うように勉強ができなかった方を主な対象としたガイドブックです。
+                    </p>
+                    <p>
+                        「自分は勉強が苦手」「今さら学びなおしても遅いのでは」と感じている人もいるかもしれません。
+                        しかし、本書がまず伝えたいのは、<strong>どんな背景があっても、「もう一度学んでみたい」という気持ちがあれば、
+                        そこから新しいスタートを切ることができる</strong>ということです。
+                    </p>
+                    <p>
+                        「どれが正解か」ではなく、「自分の体調や生活、得意・苦手に合った続けやすい選択」を一緒に考えていきます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENTS -->
+    <section class="contents" id="contents">
+        <div class="container">
+            <div class="contents-header">
+                <div>
+                    <p class="about-label">CONTENTS</p>
+                </div>
+                <h2 class="contents-title">4つの問いから始める</h2>
+            </div>
+
+            <div class="contents-grid">
+                <div class="content-card">
+                    <p class="content-card-num">Q1</p>
+                    <h3>どうやって学びなおせばいい？</h3>
+                    <p>オンライン学習やマンツーマン指導など、自分に合った勉強方法を探します。</p>
+                </div>
+                <div class="content-card">
+                    <p class="content-card-num">Q2</p>
+                    <h3>障害を持っていても大学に行けるの？</h3>
+                    <p>合理的配慮や学生支援制度とあわせて、大学進学の道を解説します。</p>
+                </div>
+                <div class="content-card">
+                    <p class="content-card-num">Q3</p>
+                    <h3>どんな学びなおしの道がある？</h3>
+                    <p>通信制高校、高卒認定、職業訓練、オンライン講座など様々なルートを紹介。</p>
+                </div>
+                <div class="content-card">
+                    <p class="content-card-num">Q4</p>
+                    <h3>生涯学習って何？</h3>
+                    <p>学校や資格だけではない、人生を通じて続いていく学びの形を紹介します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHEET -->
+    <section class="worksheet" id="worksheet">
+        <div class="container">
+            <div class="worksheet-header">
+                <div>
+                    <p class="about-label">WORKSHEET</p>
+                </div>
+                <div>
+                    <h2 class="worksheet-title">オンライン質問票</h2>
+                    <p class="worksheet-desc">冊子内の質問票をウェブで入力・印刷できます。記入したものを相談窓口に持ち込んでみましょう。</p>
+                </div>
+            </div>
+
+            <div class="worksheet-grid">
+                <a href="restart_q1.html" class="worksheet-card worksheet-card-blue">
+                    <span class="worksheet-card-num">Q1</span>
+                    <h3>何を学びなおしたいかを決める</h3>
+                    <p>昔やりたかった勉強、夢中になれること、1年後の理想など6つの質問に答えて、学びの目的を整理します。</p>
+                    <span class="worksheet-card-link">質問票を開く →</span>
+                </a>
+                <a href="restart_q2.html" class="worksheet-card worksheet-card-green">
+                    <span class="worksheet-card-num">Q2</span>
+                    <h3>ブランクと入試への不安と向き合う</h3>
+                    <p>不安なこと、心配なポイント、相談先などを整理して、支援窓口への相談準備ができます。</p>
+                    <span class="worksheet-card-link">質問票を開く →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+        <div class="container">
+            <div class="features-header">
+                <div>
+                    <p class="about-label">FEATURES</p>
+                </div>
+                <h2 class="features-title">本書の特徴</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>書き込み式質問票</h3>
+                    <p>各章に質問票を用意。自分の気持ちを整理し、相談窓口に持ち込める形式です。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>具体的な選択肢</h3>
+                    <p>放送大学、ZEN大学、Udemy、職業訓練校など、実際の学びの場を紹介しています。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>当事者の視点</h3>
+                    <p>ADHD当事者の著者が、「過去の自分に届けたかった情報」を盛り込んでいます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-inner">
+            <h2>学びなおしの一歩を、ここから</h2>
+            <p>
+                途中で休んでも、道を変えても、回り道をしてもかまいません。<br>
+                この本が、あなたのそばにあれば幸いです。
+            </p>
+            <a href="restart_guidebook.pdf" download class="btn btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7,10 12,15 17,10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                PDFをダウンロード
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">RESTART 2025</div>
+            <div class="footer-info">
+                <p>障がい者・グレーゾーンの学び直しガイドブック</p>
+                <p>著：矢野 太一 ｜ 監修：道尾 淳子</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

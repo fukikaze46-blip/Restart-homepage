@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2. ブランクと入試への不安と向き合う | RESTART 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-400: #A3A3A3;
+            --gray-600: #525252;
+            --green: #4A9B7F;
+            --green-light: #E8F5F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--black);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo {
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        .question-num {
+            background: var(--green);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.9;
+        }
+
+        .notice {
+            background: var(--green-light);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--green);
+        }
+
+        .notice-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .notice p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+        }
+
+        .notice ul {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+        }
+
+        .notice li {
+            margin-bottom: 0.3rem;
+        }
+
+        .questions {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .question-item {
+            background: var(--gray-100);
+            padding: 1.5rem;
+            border-left: 4px solid var(--green);
+        }
+
+        .question-item-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .question-item-num {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--green);
+        }
+
+        .question-item h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .question-item-hint {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .question-item textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 1rem;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            resize: vertical;
+            line-height: 1.8;
+        }
+
+        .question-item textarea:focus {
+            outline: 2px solid var(--green);
+            border-color: transparent;
+        }
+
+        .actions {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 2px solid var(--black);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+
+        @media print {
+            .actions {
+                display: none;
+            }
+
+            .question-item {
+                page-break-inside: avoid;
+            }
+
+            .question-item textarea {
+                border: 1px solid var(--gray-400);
+                min-height: 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <span class="logo">RESTART 2025</span>
+                <span class="question-num">QUESTION 2</span>
+            </div>
+            <h1>ブランクと入試への不安と向き合う</h1>
+            <p>
+                「学校からずいぶん離れてしまった」「障害がある自分でも大学で勉強していいのだろうか」。
+                そんな思いや不安を整理するための質問票です。
+                書いたものを相談窓口に持ち込んでみましょう。
+            </p>
+        </header>
+
+        <div class="notice">
+            <p class="notice-title">相談できる場所</p>
+            <ul>
+                <li>発達障害者支援センター・障害者相談支援事業所</li>
+                <li>保健所・保健センター・精神保健福祉センター</li>
+                <li>病院・クリニックの主治医・精神科・心療内科</li>
+                <li>大学・短大・専門学校の入試相談窓口</li>
+                <li>大学・専門学校の障害学生支援室・学生支援課</li>
+            </ul>
+        </div>
+
+        <div class="questions">
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">1</span>
+                    <h2>いちばん大きな不安は何か</h2>
+                </div>
+                <p class="question-item-hint">
+                    例：勉強についていけるか、試験がこわい、人間関係、年齢のこと など
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">2</span>
+                    <h2>ブランクへの気持ち</h2>
+                </div>
+                <p class="question-item-hint">
+                    長すぎる気がする／なんとか取り戻せそう／よく分からない など、正直な気持ちを書いてみましょう
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">3</span>
+                    <h2>入試で特に心配なポイント</h2>
+                </div>
+                <p class="question-item-hint">
+                    科目、テストの形式、人前での面接、時間内に解くこと など
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">4</span>
+                    <h2>楽だった勉強のやり方</h2>
+                </div>
+                <p class="question-item-hint">
+                    どんな場面だったか、できるだけ具体的に思い出してみましょう
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">5</span>
+                    <h2>あれば安心できそうな支援</h2>
+                </div>
+                <p class="question-item-hint">
+                    例：別室受験、ゆっくり説明してくれる人、相談できる窓口 など
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+
+            <div class="question-item">
+                <div class="question-item-header">
+                    <span class="question-item-num">6</span>
+                    <h2>今、相談先になる人・場所</h2>
+                </div>
+                <p class="question-item-hint">
+                    家族・友人・支援者・先生・相談窓口など、思いつくものをすべて書き出してみましょう
+                </p>
+                <textarea placeholder="ここに書いてください..."></textarea>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="window.print()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6,9 6,2 18,2 18,9"/>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                    <rect x="6" y="14" width="12" height="8"/>
+                </svg>
+                印刷する
+            </button>
+            <a href="restart_homepage.html" class="btn btn-secondary">ガイドブックに戻る</a>
+        </div>
+
+        <footer class="footer">
+            <p>RESTART 2025 障がい者・グレーゾーンの学び直しガイドブック</p>
+        </footer>
+    </div>
+</body>
+</html>
